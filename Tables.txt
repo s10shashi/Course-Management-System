@@ -1,0 +1,62 @@
+Creating Tables:-
+--------------------
+
+create database sb101project;
+
+use sb101project;
+
+-----Admin Table-----------
+
+create table admin(
+username varchar(50) unique not null,
+password varchar(20) unique not null
+);
+
+------Faculty Table---------
+
+create table faculty(
+facultyId int primary key auto_increment,
+facultyName varchar(50),
+facultyAddress varchar(50),
+mobile varchar(10),
+email varchar(30),
+username varchar(50),
+password varchar(20)
+);
+
+---------Course Table-----------
+
+create table course(
+courseId int primary key auto_increment,
+courseName varchar(20),
+fee int,
+courseDescription varchar(50)
+);
+
+---------Batch Table-------------
+
+create table batch(
+batchId int primary key auto_increment,
+courseId int,
+facultyId int,
+numberOfStudents int,
+batchStartDate date,
+duration varchar(15),
+foreign key (courseId) references course(courseId),
+foreign key (facultyId) references faculty(facultyId)
+);
+
+----------CoursePlan table==========
+
+create table coursePlan(
+planId int primary key auto_increment,
+batchId int,
+daynumber int,
+topic varchar(15),
+status varchar(10),
+foreign key (batchId) references batch(batchId)
+);
+
+
+------------------------------------------------------------
+
